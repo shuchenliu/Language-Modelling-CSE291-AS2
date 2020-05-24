@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+numpy = "==1.16.0"
+nltk = "==3.3"
+torch = "==0.3.1"
+tensorflow = "==2.2.0"
+tensorboardX = "==1.4"
+
+[requires]
+python_version = "3.6"
