@@ -142,7 +142,7 @@ def main(args):
 
 
                 # bookkeepeing
-                tracker['negELBO'] = torch.cat((tracker['negELBO'], loss.data))
+                tracker['negELBO'] = torch.cat((tracker['negELBO'], torch.cuda.FloatTensor([loss.data])))
 
                 if args.tensorboard_logging:
                     writer.add_scalar("%s/Negative_ELBO"%split.upper(), loss.data[0], epoch*len(data_loader) + iteration)
