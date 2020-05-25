@@ -34,7 +34,8 @@ def main(args):
             split=split,
             create_data=args.create_data,
             max_sequence_length=args.max_sequence_length,
-            min_occ=args.min_occ
+            min_occ=args.min_occ,
+            train_ratio=args.train_ratio
         )
 
     model = SentenceVAE(
@@ -210,6 +211,8 @@ if __name__ == '__main__':
     parser.add_argument('-log','--logdir', type=str, default='logs')
     parser.add_argument('-bin','--save_model_path', type=str, default='bin')
 
+    parser.add_argument('-tr', '--train_ratio', type=float, default=1)
+
     args = parser.parse_args()
 
     args.rnn_type = args.rnn_type.lower()
@@ -217,5 +220,6 @@ if __name__ == '__main__':
 
     assert args.rnn_type in ['rnn', 'lstm', 'gru']
     assert 0 <= args.word_dropout <= 1
+    assert 0 <= args.train_ratio <= 1
 
     main(args)
